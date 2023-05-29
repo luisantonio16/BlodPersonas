@@ -1,42 +1,223 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@100;200;300;400;500;600;700;800&family=Roboto:wght@100;300;400;500;700&family=Sassy+Frass&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/*Headers*/
+.header{
+  padding: 10px;
+  background-color:  #1111ebef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.header-logo{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+.header-logo h2{
+  color: #fff;
+  font-size: 35px;
+}
+
+.nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin: auto;
+}
+.nav-items{
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  margin: 16px;
+}
+
+.active{
+color: #fff;
+font-size: 18px;
+}
+/*Main*/
+.contenido{
+  max-width: 1200px;
+  border: 2px solid red;
+  height: 500px;
+  margin: 10px auto;
+  
+}
+
+.contenedor{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: auto;
+}
+.table{
+  width: 80%;
+  border: 1px solid blue;
+}
+
+.inicio-contenedor{
+  width: 80%;
+  margin:40px auto;
+  display: block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.inicio-contenedor h2{
+  font-size: 35px;
+  color:#1111ebef;
+  font-weight: 500;
+  margin:5px 0 ;
+}
+.inicio-contenedor p{
+  font-size: 25px;
+  color:#565663a9;
+  font-weight: 500;
+  margin:5px 0 ;
+
+}
+.button{
+  display: block;
+  margin:10px auto;
+  width: 150px;
+  padding: 10px 15px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  background-color: #1111ebef;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+.button:hover{
+  background-color: #040466ef;
+}
+/*Personas*/
+.title-personas{
+  text-align: center;
+  color: #1111ebef;
+  font-size: 30px;
+  font-weight: 600;
+  
+}
+
+.table-personas{
+  width: 65%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+.table-personas h2{
+  padding: 5px;
+  font-size: 22px;
+}
+.buscador-personas{
+  width: 25%;
+box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+border-radius: 5px;
+}
+.contenedor-personas h2{
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+.contenedor-personas{
+  width: 100%;
+  margin: auto;
+  border: 1px solid #0404663b;
+  padding: 10px 0;
+
+}
+
+/*Table Persona*/
+table{
+  font-size: 16px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+tbody{
+  padding: 10px 0;
+}
+th{
+  font-size: 18px;
+  color: #04045aef;
+  margin: auto;
+  padding: 10px;
+}
+td{
+  border-bottom: 1px solid #0404663b;
+  margin:5px ;
+  width: 100%;
+  padding: 10px 0;
+
+}
+/*Buscador personas*/
+.buscador{
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px auto;
+}
+.buscador h2{
+  text-align: center;
+  color: #1111ebef;
+  font-weight: 500;
+}
+.buscador input{
+width: 90%;
+border: none;
+border: 1px solid #50505541;
+border-radius: 10px;
+padding: 8px 10px;
+font-size: 16px;
+}
+
+
+
+/*Page Error*/
+
+.pageError{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:50px auto;
+  flex-direction: column;
+}
+.pageError h1{
+  font-size: 30px;
+  color: #04163d;
+  font-weight: bold;
+}
+.pageError .btns{
+  text-decoration: none;
+  padding: 10px 15px;
+  width: 150px;
+  background-color: #020c22;
+  margin-top: 10px;
+  color: #fff;
+  border-radius: 20px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/*Footer*/
+.footer{
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  background-color:  #1111ebef;
 }
