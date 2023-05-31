@@ -2,11 +2,11 @@ import React from "react";
 
 function Footer(){
 return(
-    <section className="footer">
+    <footer className="footer">
       <div>
         Pie de pagina
       </div>
-    </section>
+    </footer>
 );
 }
 

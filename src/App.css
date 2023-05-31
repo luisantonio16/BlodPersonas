@@ -6,7 +6,6 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
 /*Headers*/
 .header{
   padding: 10px;
@@ -48,18 +47,16 @@ font-size: 18px;
 /*Main*/
 .contenido{
   max-width: 1200px;
-  border: 2px solid red;
-  height: 500px;
+  height: auto;
   margin: 10px auto;
-  
 }
-
 .contenedor{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   margin: auto;
+
 }
 .table{
   width: 80%;
@@ -164,6 +161,46 @@ td{
   padding: 10px 0;
 
 }
+td button, Link{
+  display: flex;
+  margin: auto;
+  margin-left: 5px;
+  text-align: center;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 8px 10px;
+  border: none;
+  width: 70px;
+  color: #fff;
+  font-size:14px ;
+  transition: all .3s ease;
+  cursor: pointer;
+
+}
+.btn-edit{
+  background-color: green;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 8px 10px;
+  border: none;
+  width: 70px;
+  color: #fff;
+  font-size:14px ;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+.btn-edit:hover{
+  background-color: rgb(24, 65, 5);
+}
+.btn-delete{
+  background-color: red;
+}
+.btn-delete:hover{
+  background-color: rgb(117, 8, 5);
+}
+
 /*Buscador personas*/
 .buscador{
   display: flex;
@@ -186,10 +223,74 @@ padding: 8px 10px;
 font-size: 16px;
 }
 
+/*Registrar Personas*/
+.registrar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:50px auto;
+  color: #fff;
+
+}
+
+.contenedor-registar{
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  color: #04163d;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+.contenedor-registar h1{
+  font-size: 30px;
+  margin: 15px 0;
+}
+.formulario{
+  width: 90%;
+  margin: auto;
+
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ margin: auto;
+}
+
+input[type="text"]{
+  width: 90%;
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.308);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn{
+  display: block;
+  width: 90%;
+  border: none;
+  background-color: #04163d;
+  color: #fff;
+  font-size: 16px;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+
 
 
 /*Page Error*/
-
 .pageError{
   display: flex;
   justify-content: center;
@@ -216,8 +317,8 @@ font-size: 16px;
 
 /*Footer*/
 .footer{
+  display: flex;
+  background-color:  #1111ebef;
   height: 100%;
   width: 100%;
-  padding: 10px;
-  background-color:  #1111ebef;
 }

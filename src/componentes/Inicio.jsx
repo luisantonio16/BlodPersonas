@@ -9,9 +9,7 @@ function Inicio(){
         <h2>Inicio</h2>
        <p>Bienvenido a tu agenda de personas</p>
        <Link className="button" to={"/personas"}>Ver personas</Link>
-
         </div>
-        
     </section>
 );
 }

@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react";
 import Buscar from "./Buscar";
 import { Global } from "../Helpers/Global";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function Persona(){
+function Busqueda(){
     const [objPersonas, setPersonas] = useState([])
+    const parametros = useParams();
 
     useEffect(()=>{
       setTimeout(()=>{
         obtenerPersonas();
-      },3000)
-    }, [])
+      },1000)
+    }, [objPersonas])
 
     const obtenerPersonas = async ()=>{
-        let peticion = await fetch(Global.url+'personas',{
+        let peticion = await fetch(Global.url+'personas/'+parametros.busqueda,{
             method: 'GET',
         });
         let datos = await peticion.json();
 
         if(datos.status === "Succes"){
             setPersonas(datos.persona);
-        }  
+        } else{
+            setPersonas([]);
+        }
     }
 
     const eliminar = async (id)=>{
@@ -36,7 +39,7 @@ function Persona(){
     }
  return(
     <section >
-        <h2 className="title-personas">Agenda Personas</h2>
+        <h2 className="title-personas">Busqueda Personas</h2>
         <div className="contenedor">
             <div className="table-personas">
                 <div className="contenedor-personas">
@@ -59,7 +62,7 @@ function Persona(){
                                                 <td>{element.apellido}</td>
                                                 <td>{element.edad}</td>
                                                 <td>
-                                                    <Link to={"/Editar/"+element._id} className="btn-edit">Editar</Link>
+                                                    <button className="btn-edit">Editar</button>
                                                     <button className="btn-delete" onClick={()=>{
                                                         eliminar(element._id)
                                                     }}>Eliminar</button>
@@ -82,4 +85,4 @@ function Persona(){
     </section>
 );
 }
-export default Persona;
+export default Busqueda;

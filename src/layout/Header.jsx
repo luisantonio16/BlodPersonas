@@ -15,8 +15,6 @@ return(
                  >Personas</NavLink>
                   <NavLink to="/crear"  className={({isActive})=> isActive ? 'active': 'nav-items'}
                  >Registrar</NavLink>
-                   <NavLink to="/Editar"  className={({isActive})=> isActive ? 'active': 'nav-items'}
-                 >Editar</NavLink>
                 
             </nav>
         </div>
