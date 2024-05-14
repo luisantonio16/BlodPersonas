@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Global } from "../Helpers/Global";
 import Swal from 'sweetalert2'
+import { json } from "react-router-dom";
 
 
 function Crear(){
 
-    const [formulario, setFormulario] = useState({})
+    const [guardado, setGuardado] = useState(false)
+
+    
 
     const enviarForm =(e)=>{
         e.preventDefault();
@@ -14,33 +17,46 @@ function Crear(){
             apellido: e.target.apellido.value,
             edad:e.target.edad.value
         }
-
        // setFormulario(persona);
-        console.log(persona)
-        guardarPersona(persona);
+        guardarPersona(persona); 
+        vaciarFormulario(e);
     }
 
     const guardarPersona= async(persona)=>{
-        let personaGuardar = await fetch(Global.url+'crear',{
+        let personaGuardar = await fetch("https://localhost:7046/api/persona/crear",{
             method:"POST",
-            body:JSON.stringify(persona),
+            body: JSON.stringify(persona),
             headers:{
                 "Content-Type":"application/json"
             }
         })
 
         let datos = await personaGuardar.json();
-        if(datos.status === "Succes"){
-           
-        }  
+        if(datos.estado == 200){
+            setGuardado(true);
+            Swal.fire(
+                'se Guardo Correctamente!',
+                'Click en el boton para continuar!',
+                'success'
+              )
+        }else{
+            setGuardado(false);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error guardando la persona',
+                text: 'Verifique todos los campos',
+            })
+
+        }
+       
+
     }
 
-    const mostrarAlerta=()=>{
-        Swal.fire(
-            'Se Agrego correstamente',
-            'Click en el boton para salir!',
-            'success'
-          )
+    const vaciarFormulario= (e)=>{  
+       e.target.nombre.value = ""
+         e.target.apellido.value = ""
+        e.target.edad.value = ""
+
     }
 
 
@@ -61,7 +77,7 @@ function Crear(){
                         <label >Edad</label>
                         <input type="text" className="form-control" name="edad" placeholder="Edad" />
                     </div>
-                    <input type="submit" value="guardad" onClick={mostrarAlerta} className="btn btn-succes"/>
+                    <input type="submit" value="guardad"  className="btn btn-succes"/>
                 
                 </form>
             </div>

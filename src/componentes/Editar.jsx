@@ -2,25 +2,28 @@ import { useEffect, useState } from "react";
 import { Global } from "../Helpers/Global";
 import Swal from 'sweetalert2'
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function Editar(){
 
     const [formulario, setFormulario] = useState({});
     const parametros = useParams();
+    const navigate = useNavigate();
 
     useEffect(()=>{
         obtenerPersonas();
-        RellenarDatos();
-    },[])
+    }, []);
+
     const obtenerPersonas = async ()=>{
-        let peticion = await fetch(Global.url+'buscar/'+parametros.id,{
+        let peticion = await fetch('https://localhost:7046/api/persona/buscar?id='+parametros.id,{
             method: 'GET',
         });
         let datos = await peticion.json();
 
-        if(datos.status === "Succes"){
-            setFormulario(datos.persona);
+        if(datos.estado == 200){
+            setFormulario(datos.listaCliente);
+           
         } else{
             setFormulario([]);
         }
@@ -36,20 +39,14 @@ function Editar(){
         }
 
        // setFormulario(persona);
-        console.log(persona)
         editarPersona(persona);
+        vaciarFormulario(e);
+        navegar();
+       
     }
-    const RellenarDatos =()=>{
-        document.querySelector('.form-control-1').value = formulario.nombre;
-        document.querySelector('.form-control-2').value = formulario.apellido;
-        document.querySelector('.form-control-3').value = formulario.edad;
-     
-    }
-
-
-
+ 
     const editarPersona= async(persona)=>{
-        let personaGuardar = await fetch(Global.url+'personas/'+parametros.id,{
+        let personaGuardar = await fetch('https://localhost:7046/api/persona/editar?id='+parametros.id,{
             method:"PUT",
             body:JSON.stringify(persona),
             headers:{
@@ -58,18 +55,28 @@ function Editar(){
         })
 
         let datos = await personaGuardar.json();
-        if(datos.status === "Succes"){
+        if(datos.estado === 200){
+            Swal.fire(
+                'Se Actualizo correstamente',
+                'Click en el boton para salir!',
+                'success'
+              )
            
         }  
     }
 
-    const mostrarAlerta=()=>{
-        Swal.fire(
-            'Se Actualizo correstamente',
-            'Click en el boton para salir!',
-            'success'
-          )
-    }
+ 
+    const vaciarFormulario= (e)=>{  
+        e.target.nombre.value = ""
+          e.target.apellido.value = ""
+         e.target.edad.value = ""
+     }
+     const navegar= ()=>{  
+        setTimeout(()=>{
+            navigate("/personas", {replace:true});
+        },1000)
+       
+     }
 
 
     return(
@@ -79,17 +86,17 @@ function Editar(){
                 <form className="formulario" onSubmit={enviarForm}>
                     <div className="form-group">
                         <label >Nombre</label>
-                        <input type="text" className="form-control-1" name="nombre" placeholder="Nombre" />
+                        <input type="text" className="form-control-1" name="nombre" placeholder="Nombre" defaultValue={formulario.nombre} />
                     </div>
                     <div className="form-group">
                         <label >Apellido</label>
-                        <input type="text" className="form-control-2" name="apellido" placeholder="Apellido" />
+                        <input type="text" className="form-control-2" name="apellido" placeholder="Apellido" defaultValue={formulario.apellido} />
                     </div>
                     <div className="form-group">
                         <label >Edad</label>
-                        <input type="text" className="form-control-3" name="edad" placeholder="Edad" />
+                        <input type="text" className="form-control-3" name="edad" placeholder="Edad" defaultValue={formulario.edad} />
                     </div>
-                    <input type="submit" value="guardad" onClick={mostrarAlerta} className="btn btn-succes"/>
+                    <input type="submit" value="guardad" className="btn btn-succes"/>
                 
                 </form>
             </div>

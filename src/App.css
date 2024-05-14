@@ -161,6 +161,11 @@ td{
   padding: 10px 0;
 
 }
+.tdPersonas{
+  font-size: 25px;
+  color: #1111ebef;
+  font-weight: 700;
+}
 td button, Link{
   display: flex;
   margin: auto;
